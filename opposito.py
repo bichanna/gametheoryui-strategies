@@ -8,8 +8,11 @@ class ImportedStrat(GameStrategy):
         :param opponent_history: List of the opponent's moves
         :return: Your next move
         """
-        return GameMove.SHARE if opponent_history[-1] == GameMove.STEAL else GameMove.STEAL
 
+        if len(opponent_history) > 0:
+            return GameMove.SHARE if opponent_history[-1] == GameMove.STEAL else GameMove.STEAL
+        else:
+            return GameMove.STEAL
 
 # This line is required!
 userGame = ImportedStrat()

@@ -1,3 +1,5 @@
+from game_class import GameStrategy, GameMove
+
 class ImportedStrat(GameStrategy):
     def __init__(self) -> None:
         super().__init__(name="Generous Tom", author="Nobu", description="Tom is very, very, very generous.")
@@ -12,4 +14,3 @@ class ImportedStrat(GameStrategy):
 
 # This line is required!
 userGame = ImportedStrat()
-
