@@ -1,4 +1,4 @@
-from game_class import GameMove
+from game_class import GameMove, GameStrategy
 
 class Frued(GameStrategy):
     def __init__(self) -> None:
@@ -45,10 +45,5 @@ class Frued(GameStrategy):
                 #t4t
                 return oHist[-1]
 
-
-
-
 # This line is required!
-userGame = Freud()
-
-
+userGame = Frued()
