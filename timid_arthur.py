@@ -3,7 +3,7 @@ import random
 
 class ImportedStrat(GameStrategy):
     def __init__(self) -> None:
-        super().__init__(name="Bob", author="Nobu", description="too lazy to explain")
+        super().__init__(name="Timid Arthur", author="Nobu", description="")
 
     def next_play(
         self, player_history: list[GameMove], opponent_history: list[GameMove]
@@ -15,12 +15,15 @@ class ImportedStrat(GameStrategy):
         """
         global random, reduce
 
-        share_weight = sum([i.value for i in opponent_history])
-        steal_weight = len(opponent_history) - share_weight
+        his = len(opponent_history)
+        if his == 0:
+            return GameMove.SHARE
 
-        return random.choices(
-            [GameMove.SHARE, GameMove.STEAL], weights=(share_weight, steal_weight + 1)
-        )[0]
+        return (
+            GameMove.STEAL
+            if (sum([i.value for i in opponent_history]) / his) < 0.5
+            else choices([GameMove.SHARE, GameMove.STEAL], (3, 1))
+        )
 
 
 # This line is required!
