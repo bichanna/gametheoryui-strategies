@@ -18,7 +18,11 @@ class ImportedStrat(GameStrategy):
         :param opponent_history: List of the opponent's moves
         :return: Your next move
         """
-        return eval("GameMove."+["STEAL","SHARE"][random.choices([0,1], weights = [1-sum(opponent_history)/len(opponent_history),sum(opponent_history)/len(opponent_history)])])
+
+        if len(opponent_history) > 0:
+            return [GameMove.STEAL, GameMove.SHARE][random.choices([0,1], weights = [1-sum([x.value for x in opponent_history])/len(opponent_history),sum([x.value for x in opponent_history])/len(opponent_history)], k=1)[0]]
+        else:
+            return GameMove.SHARE
 
 # This line is required!
 userGame = ImportedStrat()

@@ -24,19 +24,19 @@ class Frued(GameStrategy):
             if [1,5,6,10,11,12].index(roundsPlayed) >= 0:
                 return GameMove.STEAL
             else:
-                return GameMove.SPLIT
+                return GameMove.SHARE
         else:
             #identify is t4t
             if (oHist.index(GameMove.STEAL) == 2):
                 return oHist[-1] #play t4t
             elif (oHist.index(GameMove.STEAL) == 7):
-                if pHist[-1] == GameMove.SPLIT:
+                if pHist[-1] == GameMove.SHARE:
                     return GameMove.STEAL
                 else:
-                    return GameMove.SPLIT
+                    return GameMove.SHARE
             elif (oHist.index(GameMove.STEAL) == 13):
                 if pHist[-1] == GameMove.STEAL and pHist[-2] == GameMove.STEAL:
-                    return GameMove.SPLIT
+                    return GameMove.SHARE
                 else:
                     return GameMove.STEAL
             elif sum(isinstance(x, GameMove.STEAL) for x in oHist[18:]) > (.5 * roundsPlayed-18):
