@@ -10,7 +10,7 @@ import random
 class ImportedStrat(GameStrategy):
     def __init__(self) -> None:
         # This is where your metadata will go:
-        super().__init__(name="Passive aggressive", author="June V.", description="Initiates retaliation five rounds in. Retaliates twice no matter what after the first player retaliates. But after two, goes back to agreeing until the other retaliates again.")
+        super().__init__(name="Passive aggressive", author="June V.", description="Initiates retaliation five rounds in, Retaliates twice no matter what.")
 
     def next_play(self, player_history: list[GameMove], opponent_history: list[GameMove]) -> GameMove:
         global random
